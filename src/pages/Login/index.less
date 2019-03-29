@@ -1,0 +1,45 @@
+.loginWrapper {
+  position: relative;
+  height: 100%;
+  background: #f8f8f8 url('@/assets/images/login-bg.png');
+}
+
+// 
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  padding: 32px;
+  margin-top: -160px;
+  margin-left: -160px;
+  box-shadow: 0 0 100px rgba(0,0,0,.1);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  :global(img) {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  :global(span) {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1890ff;
+  }
+}
+
+.verifyWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitBtn {
+  width: 100%;
+}

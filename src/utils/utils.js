@@ -1,6 +1,7 @@
 import moment from 'moment'
 import data from '@/assets/generateData'
 import { parse } from 'qs'
+const AMap = window.AMap
 
 export const queryFormItemLayout = {
   labelCol: {
@@ -69,4 +70,60 @@ export const toAddress = (address) => {
 
 export function getPageQuery() {
   return parse(window.location.href.split('?')[1])
+}
+
+export function queryGeolocation() {
+  return new Promise((resolve, reject) => {
+    const map = new AMap.Map('iCenter')
+    map.plugin('AMap.Geolocation', () => {
+      const geolocation = new AMap.Geolocation({
+        timeout: 10000  // 超过10秒后停止定位，默认：无穷大
+      })
+      geolocation.getCurrentPosition()
+      AMap.event.addListener(geolocation, 'complete', data => {
+        resolve({
+          province: data.addressComponent.province,
+          city: data.addressComponent.city,
+          district: data.addressComponent.district,
+          lng: data.position.lng,
+          lat: data.position.lat
+        })
+      })
+      AMap.event.addListener(geolocation, 'error', error => {
+        console.log('定位失败', error)
+        reject(error)
+      })
+    })
+  })
+}
+
+export function downloadIamge(src, name) {
+  const image = new Image()
+  // 解决跨域 Canvas 污染问题
+  image.setAttribute('crossOrigin', 'anonymous')
+  // src赋值一定要在 跨域 属性设置之后
+  image.src = src
+  image.onload = function () {
+    const canvas = document.createElement('canvas')
+    canvas.width = image.width
+    canvas.height = image.height
+
+    const context = canvas.getContext('2d')
+    context.drawImage(image, 0, 0, image.width, image.height)
+    console.log(canvas)
+    const url = canvas.toDataURL('image/png')
+
+    // 生成一个a元素
+    const a = document.createElement('a')
+
+    // 将a的download属性设置为我们想要下载的图片名称，若name不存在则使用‘下载图片名称’作为默认名称
+    a.download = name || +new Date()
+    // 将生成的URL设置为a.href属性
+    a.href = url
+    // 创建一个单击事件
+    // const event = new MouseEvent('click')
+    // // 触发a的单击事件
+    // a.dispatchEvent(event)
+    a.click()
+  }
 }

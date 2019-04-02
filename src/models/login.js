@@ -40,6 +40,7 @@ export default {
             return
           }
         }
+        await dispatch.app.queryCurrentUser()
         dispatch(replace(redirect || '/'))
       }
     },

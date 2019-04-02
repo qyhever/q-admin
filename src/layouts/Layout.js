@@ -7,6 +7,8 @@ import Sidebar from './Sidebar'
 import Headerbar from './Header'
 import BreadCrumb from './Bread'
 import '@/assets/less/nprogress.less'
+// import { queryGeolocation } from '@/utils/utils'
+NProgress.configure({ showSpinner: false })
 
 @connect(({ app, loading }) => ({ app, loading }))
 class Container extends Component {
@@ -15,8 +17,14 @@ class Container extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch.app.queryCurrentUser()
+    if (!this.props.app.menus.length) {
+      this.props.dispatch.app.queryCurrentUser()
+    }
     this.props.dispatch.app.queryTotalRoles()
+    // ;(async () => {
+    //   const geo = await queryGeolocation()
+    //   console.log(geo)
+    // })()
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {

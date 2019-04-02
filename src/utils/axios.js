@@ -39,7 +39,6 @@ instance.interceptors.response.use((response) => {
 
   if (status === 401 || status === 403) {
     message.destroy()
-    // message.error(msg)
     message.error('登录超时，请重新登录')
     clearLocal()
     store.dispatch(push('/login'))
@@ -47,7 +46,8 @@ instance.interceptors.response.use((response) => {
   }
 
   if (status === 404) {
-    store.dispatch(push('/404'))
+    message.destroy()
+    message.error('404 Not Found')
     return
   }
 

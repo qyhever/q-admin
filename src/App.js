@@ -8,6 +8,9 @@ import { LocaleProvider } from 'antd'
 import 'antd/dist/antd.css'
 import 'ant-design-pro/dist/ant-design-pro.css'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
+import echarts from 'echarts'
+import macarons from '@/assets/macarons.project.json'
+echarts.registerTheme(macarons.themeName, macarons.theme)
 
 const history = createHashHistory()
 export default class App extends Component {

@@ -13,8 +13,12 @@ export async function create(params) {
   return axios.post('/user', params)
 }
 
-export async function remove(params) {
-  return axios.post('/user/delete', params)
+export async function update(params) {
+  return axios.put('/user', params)
+}
+
+export async function remove(_ids) {
+  return axios.post('/user/delete', {_ids})
 }
 
 export async function switchEnabled(params) {

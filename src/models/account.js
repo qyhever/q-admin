@@ -1,4 +1,4 @@
-import { getList, create, remove, queryOne, switchEnabled } from '@/api/account'
+import { getList, create, update, remove, queryOne, switchEnabled } from '@/api/account'
 import { message } from 'antd'
 export default {
   state: {
@@ -68,20 +68,23 @@ export default {
         console.log(error)
       }
     },
-    // async update(payload) {
-    //   try {
-    //     const res = await update(payload)
-    //     if (res.success) {
-    //       message.destroy()
-    //       message.success('更新成功')
-    //       this.query()
-    //     } else {
-    //       return Promise.reject()
-    //     }
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // },
+    async update(payload) {
+      try {
+        const res = await update(payload)
+        if (res.success) {
+          message.destroy()
+          message.success('更新成功')
+          this.updateState({
+            visible: false
+          })
+          this.query()
+        } else {
+          return Promise.reject()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async delete(payload) {
       try {
         const res = await remove(payload)

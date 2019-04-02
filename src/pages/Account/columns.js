@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Modal, Switch } from 'antd'
+import { Divider, Modal, Switch } from 'antd'
 import { formatTime } from '@/utils/utils'
 
 export const columns = dispatch => {
@@ -22,12 +22,12 @@ export const columns = dispatch => {
     dispatch.account.switchEnabled({ _id, enabled })
   }
 
-  // function handleBeforeUpdate(id) {
-  //   dispatch.account.queryOne(id)
-  //   dispatch.account.updateState({
-  //     visible: true
-  //   })
-  // }
+  function handleBeforeUpdate(id) {
+    dispatch.account.queryOne(id)
+    dispatch.account.updateState({
+      visible: true
+    })
+  }
 
   return [{
     title: '头像',
@@ -71,10 +71,10 @@ export const columns = dispatch => {
     key: 'operation',
     render: (_, record) => (
       <span>
-        {/* <a onClick={handleBeforeUpdate.bind(null, record._id)}>修改</a> */}
+        <a onClick={handleBeforeUpdate.bind(null, record._id)}>修改</a>
         {record.userName !== 'admin' && (
           <Fragment>
-            {/* <Divider type="vertical" /> */}
+            <Divider type="vertical" />
             <a onClick={handleDelete.bind(null, record._id)}>删除</a>
           </Fragment>
         )}

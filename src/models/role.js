@@ -64,6 +64,9 @@ export default {
         if (res.success) {
           message.destroy()
           message.success('更新成功')
+          this.updateState({
+            visible: false
+          })
           this.query()
         } else {
           return Promise.reject()

@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon, Dropdown, Menu, Spin } from 'antd'
 import styles from './Header.less'
 import avatarUrl from '@/assets/images/user.png'
+import Screenfull from '@/components/Screenfull'
 
 function HeaderBar({ dispatch, loading, collapsed, handleToggle, user }) {
 
@@ -25,7 +26,7 @@ function HeaderBar({ dispatch, loading, collapsed, handleToggle, user }) {
         <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
       </div>
       <div className={styles.headerRight}>
-
+        <Screenfull />
         <Dropdown overlay={menu} placement="bottomRight">
           <Spin spinning={loading.effects.app.queryCurrentUser} size="small">
             <div className={styles.user}>

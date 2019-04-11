@@ -25,7 +25,7 @@
 
 .main {
   height: 440px;
-  .main-line {
+  .chart {
     height: 100%;
     padding: 20px;
     background-color: #fff;
@@ -36,19 +36,29 @@
   .main-info {
     display: flex;
     flex-direction: column;
+    .info-top, .info-bottom {
+      padding: 20px;
+      color: #fff;
+    }
     .info-top {
       flex: 1;
       margin-bottom: 20px;
       background-color: #f797d6;
+      font-size: 20px;
+      font-family: "\6977\4F53";
       &:hover {
         box-shadow: 0 2px 20px rgba(0,0,0,.15);
       }
     }
     .info-bottom {
       flex: 1;
+      display: flex;
       background-color: #8fc9fb;
       &:hover {
         box-shadow: 0 2px 20px rgba(0,0,0,.15);
+      }
+      .left, .right {
+        flex: 1;
       }
     }
   }

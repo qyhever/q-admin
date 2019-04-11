@@ -1,4 +1,5 @@
 import { queryCurrentUser, queryTotalRoles } from '@/api/common'
+import { queryGeolocation } from '@/utils/utils'
 import totalMenus from '@/config/menus'
 
 // 可访问菜单，从 menus 中过滤出 包含 permissions 的 menu
@@ -20,7 +21,8 @@ export default {
     user: {}, // 当前用户信息
     menus: [], // 可访问菜单
     totalRoles: [], // 平台全部角色
-    permissions: [] // 当前用户的资源权限 ['menuName1', 'menuName2'...]
+    permissions: [], // 当前用户的资源权限 ['menuName1', 'menuName2'...]
+    geoLocation: {} // 当前位置信息
   },
 
   reducers: {
@@ -50,6 +52,13 @@ export default {
           totalRoles: res.data
         })
       }
+    },
+
+    async queryGeolocation() {
+      const geoLocation = await queryGeolocation()
+      this.updateState({
+        geoLocation
+      })
     }
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react'
 import moment from 'moment'
 
-export default class Dashboard extends Component {
+export default class ChartLine extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -62,13 +62,15 @@ export default class Dashboard extends Component {
           name: '访问用户',
           type: 'line',
           data: this.state.seriesData.froms,
-          smooth: true
+          smooth: true,
+          animation: true
         },
         {
           name: '下单用户',
           type: 'line',
           data: this.state.seriesData.orders,
-          smooth: true
+          smooth: true,
+          animation: true
         }
       ]
     }

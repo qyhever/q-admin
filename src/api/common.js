@@ -1,12 +1,12 @@
 import axios from '@/utils/axios'
 
 export function getListReq(params) {
-  const url = 'https://api.qyhever.com/disc'
-  return axios.get(url, params)
+  return axios.get('/disc', params)
 }
 
 export function getQiniuToken() {
-  return axios.get('/upload/qiniuToken')
+  const url = process.env.NODE_ENV === 'development' ? '/upload/qiniuTokenTest' : '/upload/qiniuToken'
+  return axios.get(url)
 }
 
 export function queryCurrentUser() {

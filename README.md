@@ -12,6 +12,7 @@ wepback配置使用create-react-app快速搭建
 - [@rematch/core](https://github.com/rematch/rematch)（一个更好用的 redux）
 - [@rematch/loading](https://github.com/rematch/rematch/tree/master/plugins/loading#readme)（rematch 的 loading 插件）
 - [react-redux](https://github.com/reduxjs/react-redux)（react 和 redux 的连接库）
+- [connected-react-router](https://github.com/supasate/connected-react-router#readme)（redux 和 react-router 状态同步）
 - [antd](https://ant.design/index-cn)（蚂蚁金服开源的 react ui 组件框架）
 - [axios](https://github.com/mzabriskie/axios)（基于 Promise 的 HTTP 请求库👍）
 - [react-router-breadcrumbs-hoc](https://github.com/icd2k3/react-router-breadcrumbs-hoc#readme)（用于使用 react-router 渲染面包屑）
@@ -21,3 +22,6 @@ wepback配置使用create-react-app快速搭建
 - [echarts-for-react](https://github.com/hustcc/echarts-for-react)（可视化图表库，react 对 echarts 的封装）
 - [nprogress](https://github.com/rstacruz/nprogress)（顶部进度条）
 - [moment](https://github.com/moment/moment)（日期处理类库）
+- [classnames]()（动态 className 类名）
+- [screelfull](https://github.com/sindresorhus/screenfull.js)（全屏插件）
+- [react-custom-scrollbars](https://github.com/malte-wessel/react-custom-scrollbars)（react 自定义滚动条组件）

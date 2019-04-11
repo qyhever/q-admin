@@ -12,6 +12,7 @@ import FormStep from '@/pages/Form/FormStep'
 import QueryCreate from '@/pages/Table/Query/QueryCreate'
 import TableBasic from '@/pages/Table/TableBasic'
 import RichtextQuill from '@/pages/Richtext/Quill'
+import Braft from '@/pages/Richtext/Braft'
 import RichtextTinyMce from '@/pages/Richtext/TinyMce'
 import RichtextDraftWysiwyg from '@/pages/Richtext/DraftWysiwyg'
 import RichtextCkeditor from '@/pages/Richtext/Ckeditor'
@@ -65,6 +66,7 @@ export default (props) => {
         <Permission exact path="/table/basic" component={TableBasic} />
         <Permission exact path="/query/create" component={QueryCreate} />
         <Permission exact path="/richtext/quill" component={RichtextQuill} />
+        <Permission exact path="/richtext/braft" component={Braft} />
         <Permission exact path="/richtext/tinymce" component={RichtextTinyMce} />
         <Permission exact path="/richtext/draft-wysiwyg" component={RichtextDraftWysiwyg} />
         <Permission exact path="/richtext/ckeditor" component={RichtextCkeditor} />

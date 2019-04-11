@@ -4,19 +4,6 @@ import classNames from 'classnames'
 import styles from './Dashboard.less'
 
 export default class CardList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true
-    }
-  }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        loading: false
-      })
-    }, 2000)
-  }
   render() {
     return (
       <Row gutter={24}>

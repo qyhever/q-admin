@@ -4,6 +4,7 @@ import { Layout, Menu, Icon } from 'antd'
 import styles from './Sidebar.less'
 import logoUrl from '@/assets/images/logo.png'
 import IconFont from '@/components/IconFont'
+import { Scrollbars } from 'react-custom-scrollbars'
 const { Sider } = Layout
 const { Item, SubMenu } = Menu
 
@@ -42,17 +43,19 @@ export default class Sidebar extends Component {
     const openKey = pathname.slice(0, pathname.slice(1).indexOf('/') + 1 )
     return (
       <Sider className={styles.sidebar} collapsed={collapsed} theme="light">
-        <div className={styles.logo}>
-          <img alt="logo" src={logoUrl} className={styles.logoImg} />
-          {!collapsed && <span>管理后台</span>}
-        </div>
-        <Menu
-          defaultSelectedKeys={[pathname]}
-          defaultOpenKeys={[openKey]}
-          mode="inline"
-        >
-        {generateMenus(menus)}
-        </Menu>
+        <Scrollbars style={{height: '100%'}} autoHide>
+          <div className={styles.logo}>
+            <img alt="logo" src={logoUrl} className={styles.logoImg} />
+            {!collapsed && <span>管理后台</span>}
+          </div>
+          <Menu
+            defaultSelectedKeys={[pathname]}
+            defaultOpenKeys={[openKey]}
+            mode="inline"
+          >
+          {generateMenus(menus)}
+          </Menu>
+        </Scrollbars>
       </Sider>
     )
   }

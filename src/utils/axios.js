@@ -5,12 +5,12 @@ import store from '@/store'
 import { clearLocal, getToken } from '@/utils/storage'
 
 const isProduction = process.env.NODE_ENV === 'production'
-const baseURL = isProduction ? 'https://api.qyhever.com' : 'http://localhost:3000'
+// const baseURL = isProduction ? 'https://api.qyhever.com' : 'http://localhost:3000'
 
 const instance = axios.create({
   // baseURL: process.env.BASE_URL
-  // baseURL: 'https://api.qyhever.com'
-  baseURL
+  baseURL: 'https://api.qyhever.com'
+  // baseURL
 })
 
 instance.interceptors.request.use((config) => {
@@ -32,8 +32,13 @@ instance.interceptors.response.use((response) => {
     message.destroy()
     message.error(response.data.msg)
   }
-  return response.data
+  return response.data || {}
 }, (error) => {
+  if (!error.response) {
+    message.destroy()
+    message.error('系统异常，请稍后再试')
+    return {}
+  }
   const status = error.response.status
   // const msg = error.response.data.msg
 
@@ -42,19 +47,19 @@ instance.interceptors.response.use((response) => {
     message.error('登录超时，请重新登录')
     clearLocal()
     store.dispatch(push('/login'))
-    return
+    return {}
   }
 
   if (status === 404) {
     message.destroy()
     message.error('404 Not Found')
-    return
+    return {}
   }
 
   if (status === 500) {
     message.destroy()
     message.error('服务器异常')
-    return
+    return {}
   }
   return Promise.reject(error)
 })

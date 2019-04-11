@@ -6,9 +6,8 @@ import styles from './Layout.less'
 import Sidebar from './Sidebar'
 import Headerbar from './Header'
 import BreadCrumb from './Bread'
-import '@/assets/less/nprogress.less'
-// import { queryGeolocation } from '@/utils/utils'
-NProgress.configure({ showSpinner: false })
+import 'nprogress/nprogress.css'
+NProgress.configure({ showSpinner: true })
 
 @connect(({ app, loading }) => ({ app, loading }))
 class Container extends Component {
@@ -21,15 +20,12 @@ class Container extends Component {
       this.props.dispatch.app.queryCurrentUser()
     }
     this.props.dispatch.app.queryTotalRoles()
-    // ;(async () => {
-    //   const geo = await queryGeolocation()
-    //   console.log(geo)
-    // })()
+    this.props.dispatch.app.queryGeolocation()
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log('layout nextProps.location', nextProps.location)
-    console.log('layout currentProps.location', this.props.location)
+    // console.log('layout nextProps', nextProps)
+    // console.log('layout currentProps', this.props)
     if (nextProps.location.pathname !== this.props.location.pathname) {
       NProgress.start()
     }

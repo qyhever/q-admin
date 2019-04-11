@@ -40,6 +40,7 @@ const menus = [
     breadcrumb: '富文本',
     children: [
       { name: 'richtext_quill', path: '/richtext/quill', title: 'quill', breadcrumb: 'quill' },
+      { name: 'richtext_braft', path: '/richtext/braft', title: 'braft', breadcrumb: 'braft' },
       { name: 'richtext_tinymce', path: '/richtext/tinymce', title: 'tinymce', breadcrumb: 'tinymce' },
       { name: 'richtext_draft_wysiwyg', path: '/richtext/draft-wysiwyg', title: 'draft-wysiwyg', breadcrumb: 'draft-wysiwyg' },
       { name: 'richtext_ckeditor', path: '/richtext/ckeditor', title: 'ckeditor', breadcrumb: 'ckeditor' }

@@ -1,9 +1,8 @@
 {
-  "main.css": "static/css/main.4bbae727.css",
-  "main.css.map": "static/css/main.4bbae727.css.map",
-  "main.js": "static/js/main.a2bf5886.js",
-  "main.js.map": "static/js/main.a2bf5886.js.map",
+  "main.css": "static/css/main.5c290b67.css",
+  "main.js": "static/js/main.1bd6d901.js",
+  "manifest.js": "static/js/manifest.dcfbd862.js",
   "static\\media\\login-bg.png": "static/media/login-bg.57d270e3.png",
-  "table-query.js": "static/js/table-query.c5faede6.chunk.js",
-  "table-query.js.map": "static/js/table-query.c5faede6.chunk.js.map"
+  "table-query.js": "static/js/table-query.1b42438a.chunk.js",
+  "vendor.js": "static/js/vendor.efa31543.js"
 }

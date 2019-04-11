@@ -39,11 +39,13 @@ export const columns = dispatch => {
   }, {
     title: '年龄',
     dataIndex: 'age',
-    key: 'age'
+    key: 'age',
+    width: 80
   }, {
     title: '性别',
     dataIndex: 'gender',
     key: 'gender',
+    width: 80,
     render: (text) => {
       switch (text) {
         case '0': return <span>女</span>
@@ -63,11 +65,13 @@ export const columns = dispatch => {
     title: '地址',
     dataIndex: 'address',
     key: 'address',
+    width: 260,
     render: (text) => <span>{toAddress(text)}</span>
   }, {
     title: '创建时间',
     dataIndex: 'createTime',
     key: 'createTime',
+    width: 180,
     sorter: true,
     // sortOrder: sortOrder,
     render: (text) => <span>{text ? formatTime(text) : '--'}</span>
@@ -75,6 +79,7 @@ export const columns = dispatch => {
     title: '更新时间',
     dataIndex: 'updateTime',
     key: 'updateTime',
+    width: 180,
     sorter: true,
     // sortOrder: sortOrder,
     render: (text) => <span>{text ? formatTime(text) : '--'}</span>
@@ -82,6 +87,7 @@ export const columns = dispatch => {
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
+    width: 180,
     render: (_, record) => (
       <span>
         <a onClick={handleBeforeUpdate.bind(null, record._id)}>修改</a>

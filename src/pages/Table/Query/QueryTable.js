@@ -39,7 +39,7 @@ export default ({ dispatch, loading, list, page, size, total, rowKeys }) => {
 
   return (
     <Table
-      scroll={{ x: 1376 }}
+      scroll={{ x: 1580 }}
       loading={loading.effects.tableQuery.query}
       dataSource={list}
       columns={columns(dispatch)}

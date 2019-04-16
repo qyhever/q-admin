@@ -4,7 +4,7 @@ import { push } from 'connected-react-router'
 import store from '@/store'
 import { clearLocal, getToken } from '@/utils/storage'
 
-const isProduction = process.env.NODE_ENV === 'production'
+// const isProduction = process.env.NODE_ENV === 'production'
 // const baseURL = isProduction ? 'https://api.qyhever.com' : 'http://localhost:3000'
 
 const instance = axios.create({

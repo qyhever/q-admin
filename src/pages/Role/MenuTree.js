@@ -10,15 +10,18 @@ class MenuTree extends Component {
     this.state = {
       selectedKeys: [],
       checkedKeys: checkedKeys || [], // 当前状态为 勾选 的节点 keys
-      keys: keys || [] // 需要传给后端的 keys，包含半勾选的 父节点
+      keys: keys || [], // 需要传给后端的 keys，包含半勾选的 父节点
+      menus: [],
+      expandedKeys: [],
+      autoExpandParent: true
     }
   }
 
   static getDerivedStateFromProps(props, state) {
-    // const { checkedKeys, keys } = props.value
-    if (props.value !== state.value) {
-      // return { checkedKeys, keys }
-      return { ...(props.value || {}) }
+    if (props.value !== state.value || props.menus !== state.menus) {
+      const { checkedKeys, keys } = props.value
+      const expandedKeys = props.menus.map(item => item.name)
+      return { checkedKeys, keys, expandedKeys }
     }
     return null
   }
@@ -38,6 +41,13 @@ class MenuTree extends Component {
     this.setState({ selectedKeys })
   }
 
+  onExpand = (expandedKeys) => {
+    this.setState({
+      expandedKeys,
+      autoExpandParent: false
+    })
+  }
+
   renderTreeNodes = data => data.map(item => {
     if (item.children) {
       return (
@@ -51,13 +61,15 @@ class MenuTree extends Component {
 
   render() {
     const { menus }  = this.props
-    // expandedKeys：默认全部展开
-    const expandedKeys = menus.map(item => item.name)
+    // // expandedKeys：默认全部展开
+    // const expandedKeys = menus.map(item => item.name)
     
     return (
       <Tree
+        autoExpandParent={this.state.autoExpandParent}
         checkable
-        expandedKeys={expandedKeys}
+        onExpand={this.onExpand}
+        expandedKeys={this.state.expandedKeys}
         onCheck={this.onCheck}
         checkedKeys={this.state.checkedKeys}
         onSelect={this.onSelect}

@@ -34,12 +34,18 @@ export const columns = dispatch => {
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
-    render: (_, record) => (
-      <span>
-        <a onClick={handleBeforeUpdate.bind(null, record._id)}>修改</a>
-        <Divider type="vertical" />
-        <a onClick={handleDelete.bind(null, record._id)}>删除</a>
-      </span>
-    )
+    render: (_, record) => {
+      if (record.roleName === 'admin') {
+        return '--'
+      } else {
+        return (
+          <span>
+            <a onClick={handleBeforeUpdate.bind(null, record._id)}>修改</a>
+            <Divider type="vertical" />
+            <a onClick={handleDelete.bind(null, record._id)}>删除</a>
+          </span>
+        )
+      }
+    }
   }]
 }

@@ -28,7 +28,7 @@ export default class Qrcode extends Component {
       <div className="con-container">
         <div>
           <Input defaultValue="qrcode.react" style={{width: 260}} ref={el => this.input = el} />
-          <Button type="primary" onClick={this.handleGenerateCode}>点击生成二维码</Button>
+          <Button type="primary" className="ml15" onClick={this.handleGenerateCode}>点击生成二维码</Button>
         </div>
         <QRCode className="mt20" value={this.state.text} {...options}></QRCode>
       </div>

@@ -18,7 +18,6 @@ export default class Braft extends Component {
     })
   }
   handleSubmit = (e) => {
-    debugger
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (err) return

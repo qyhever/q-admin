@@ -113,6 +113,20 @@ function getTotalMenuKeys(menus) {
   return ret
 }
 
+function flattenMenus(menus) {
+  let ret = []
+  menus.forEach(item => {
+    if (Array.isArray(item.children)) {
+      ret = ret.concat(flattenMenus(item.children))
+    } else {
+      ret.push(item)
+    }
+  })
+  return ret
+}
+
 export const totalMenuKeys = getTotalMenuKeys(menus)
+
+export const flattendMenus = flattenMenus(menus)
 
 export default menus

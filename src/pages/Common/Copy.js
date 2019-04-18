@@ -23,7 +23,7 @@ class Copy extends Component {
       <div className="con-container">
         <Input style={{width: 260}} value={this.state.text} onChange={this.handleChange} />
         <CopyToClipboard text={this.state.text} onCopy={this.handleCopy}>
-          <Button type="primary">点击复制</Button>
+          <Button type="primary" className="ml15">点击复制</Button>
         </CopyToClipboard>
       </div>
     )

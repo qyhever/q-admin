@@ -6,6 +6,8 @@ export default class ReactQuill extends PureComponent {
   constructor(props) {
     super(props)
     this.editor = null
+    this.quillRef = null
+    this.hasChange = false
     this.state = {
       content: props.value || 'Quill Rich Text Editor'
     }
@@ -15,7 +17,7 @@ export default class ReactQuill extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.props.value && !this.hasChange) {
       this.editor.clipboard.dangerouslyPasteHTML(nextProps.value)
       const index = this.editor.getSelection().index
       this.editor.setSelection(index + 1)
@@ -36,7 +38,7 @@ export default class ReactQuill extends PureComponent {
   }
 
   initEditor() {
-    this.editor = new Quill('.editor', {
+    this.editor = new Quill(this.quillRef, {
       modules: {
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -56,7 +58,7 @@ export default class ReactQuill extends PureComponent {
           ['clean']
         ]
       },
-      placeholder: 'quill richtext...',
+      placeholder: '请输入...',
       theme: 'snow'
     })
     const editor = this.editor
@@ -82,6 +84,7 @@ export default class ReactQuill extends PureComponent {
       input.click()
     })
     editor.on('text-change', () => {
+      this.hasChange = true
       const value = editor.container.firstChild.innerHTML
       if (this.props.onChange) {
         this.props.onChange(value)
@@ -91,7 +94,7 @@ export default class ReactQuill extends PureComponent {
 
   render() {
     return (
-      <div className="editor" style={{ width: '100%', height: 500 }}></div>
+      <div ref={node => this.quillRef = node} style={{ width: '100%', height: 500 }}></div>
     )
   }
 }

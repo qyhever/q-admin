@@ -5,7 +5,8 @@
 
 :global {
   .con-container {
-    flex: 1;
+    // flex: 1;
+    min-height: 100%;
     padding: 20px;
     background-color: #fff;
   }
@@ -28,11 +29,19 @@
   }
   .fade-enter {
     opacity: 0;
-    z-index: 1;
+    transform: translateX(-30px);
   }
-  
-  .fade-enter.fade-enter-active {
+  .fade-enter-active {
     opacity: 1;
-    transition: opacity 250ms ease-in;
+    transform: translateX(0);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s, transform 0.4s;
   }
 }

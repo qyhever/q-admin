@@ -1,13 +1,13 @@
 const TOKEN = 'react-admin-token'
 
 export function getToken() {
-  return sessionStorage.getItem(TOKEN)
+  return window.localStorage.getItem(TOKEN)
 }
 
 export function setToken(value) {
-  sessionStorage.setItem(TOKEN, value)
+  window.localStorage.setItem(TOKEN, value)
 }
 
 export function clearLocal() {
-  sessionStorage.removeItem(TOKEN)
+  window.localStorage.removeItem(TOKEN)
 }
